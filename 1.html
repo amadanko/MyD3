@@ -25,7 +25,11 @@
         .enter()
         .append("rect")
         .attr("width",10)
-        .attr("height", function(d) {return d;});
+        .attr("height", function(d) {return d;})
+        .style("fill", "blue")
+        .style("stroke", "red")
+        .style("stroke-width", "1px")
+        .style("opacity", .25);
 
     </script>
   </body>
