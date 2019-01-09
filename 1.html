@@ -29,7 +29,10 @@
         .style("fill", "blue")
         .style("stroke", "red")
         .style("stroke-width", "1px")
-        .style("opacity", .25);
+        .style("opacity", .25)
+        .attr("x", function(d,i) {return i * 10})
+        //reversing graph
+        .attr("y", function(d,i) {return 100-d});
 
     </script>
   </body>
