@@ -18,21 +18,25 @@
     </div>
     <script>
       var someData = ["15", "50", "22", "8", "100", "10"];
+      var biggerData = ["14","68","24500","430","19","1000","5555"];
+
+      var yScale = d3.scaleLinear().domain([0,24500]).range([0,100]);
 
       d3.select("svg")
         .selectAll("rect")
-        .data(someData)
+        .data(biggerData)
         .enter()
         .append("rect")
         .attr("width",10)
-        .attr("height", function(d) {return d;})
+        .attr("height", function(d) {return yScale(d);})
         .style("fill", "blue")
         .style("stroke", "red")
         .style("stroke-width", "1px")
         .style("opacity", .25)
-        .attr("x", function(d,i) {return i * 10})
+        //distributing bars
+        .attr("x", function(d,i) {return i * 10;})
         //reversing graph
-        .attr("y", function(d,i) {return 100-d});
+        .attr("y", function(d,i) {return 100-yScale(d);});
 
     </script>
   </body>
