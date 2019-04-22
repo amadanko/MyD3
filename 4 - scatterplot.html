@@ -45,8 +45,26 @@
       .style("fill", function(d) {return colorScale(d.impact);})
       .style("stroke", "black")
       .style("stroke-width","1px");
-};
 
+    var tweetG=d3.select("svg")
+      .selectAll("g")
+      .data(incomingData)
+      .enter()
+      .append("g")
+      .attr("transform", function(d) {
+      return "translate(" +
+        timeRamp(d.tweetTime)+ "," + (480 - yScale(d.impact))+")";
+        });
+
+    tweetG.append("circle")
+      .attr("r",function(d) {return radiusScale(d.impact);})
+      .style("fill", "#990000")
+      .style("stroke", "black")
+      .style("stroke-width", "1px");
+
+    tweetG.append("text")
+      .text(function(d) {return d.user + "-" + d.tweetTime.getHours();});
+};
     </script>
   </body>
 </html>
